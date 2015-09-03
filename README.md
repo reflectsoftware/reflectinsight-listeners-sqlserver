@@ -57,7 +57,7 @@ Then in your app.config or web.config file, add the following configuration sect
 </configuration>
 ```
 
-Additional configuration details for the ReflectSoftware.Insight.Listeners.SqlServer listener can be found [here](https://reflectsoftware.atlassian.net/wiki/display/RI5/Email+Listener).
+Additional configuration details for the ReflectSoftware.Insight.Listeners.SqlServer listener can be found [here](https://reflectsoftware.atlassian.net/wiki/display/RI5/SQL+Server+Listener).
 
 ## Additional Resources
 
