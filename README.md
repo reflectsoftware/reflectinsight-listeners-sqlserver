@@ -3,7 +3,6 @@
 [![Build status](https://ci.appveyor.com/api/projects/status/github/reflectsoftware/reflectinsight-listeners-SqlServer?svg=true)](https://ci.appveyor.com/project/reflectsoftware/reflectinsight-listeners-SqlServer)
 [![Release](https://img.shields.io/github/release/reflectsoftware/reflectinsight-listeners-SqlServer.svg)](https://github.com/reflectsoftware/reflectinsight-listeners-SqlServer/releases/latest)
 [![NuGet Version](http://img.shields.io/nuget/v/reflectsoftware.insight.listeners.SqlServer.svg?style=flat)](http://www.nuget.org/packages/ReflectSoftware.Insight.Listeners.SqlServer/)
-[![NuGet](https://img.shields.io/nuget/dt/reflectsoftware.insight.listeners.SqlServer.svg)](http://www.nuget.org/packages/ReflectSoftware.Insight.Listeners.SqlServer/)
 [![Stars](https://img.shields.io/github/stars/reflectsoftware/reflectinsight-listeners-SqlServer.svg)](https://github.com/reflectsoftware/reflectinsight-listeners-SqlServer/stargazers)
 
 ## Overview ##

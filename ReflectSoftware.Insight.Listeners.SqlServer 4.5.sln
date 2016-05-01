@@ -1,9 +1,22 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.23107.0
+VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReflectSoftware.Insight.Listeners.SqlServer 4.5", "src\ReflectSoftware.Insight.Listeners.SqlServer 4.5.csproj", "{B2789706-0C89-4434-A29F-3CF263A51B84}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{69F6AAF4-1294-4998-9FD8-6CA94F71B152}"
+	ProjectSection(SolutionItems) = preProject
+		Build.ps1 = Build.ps1
+		CHANGES.md = CHANGES.md
+		LICENSE.md = LICENSE.md
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{10DDDCE1-E8DB-4F41-8DE2-633EBBC768B4}"
+	ProjectSection(SolutionItems) = preProject
+		src\ReflectSoftware.Insight.Listeners.SqlServer.nuspec = src\ReflectSoftware.Insight.Listeners.SqlServer.nuspec
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -18,5 +31,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{10DDDCE1-E8DB-4F41-8DE2-633EBBC768B4} = {69F6AAF4-1294-4998-9FD8-6CA94F71B152}
 	EndGlobalSection
 EndGlobal
