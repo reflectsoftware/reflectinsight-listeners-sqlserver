@@ -37,8 +37,8 @@ ReflectInsight goes beyond where no text-based logging has gone before.</summary
         </references>
     </metadata>
     <files>
-        <file src="bin\release\net20\ReflectSoftware.Insight.Listeners.SqlServer.dll" target="lib\net20\ReflectSoftware.Insight.Listeners.SqlServer.dll" />
-        <file src="bin\release\net40\ReflectSoftware.Insight.Listeners.SqlServer.dll" target="lib\net40\ReflectSoftware.Insight.Listeners.SqlServer.dll" />
+        <!--<file src="bin\release\net20\ReflectSoftware.Insight.Listeners.SqlServer.dll" target="lib\net20\ReflectSoftware.Insight.Listeners.SqlServer.dll" />
+        <file src="bin\release\net40\ReflectSoftware.Insight.Listeners.SqlServer.dll" target="lib\net40\ReflectSoftware.Insight.Listeners.SqlServer.dll" />-->
         <file src="bin\release\net45\ReflectSoftware.Insight.Listeners.SqlServer.dll" target="lib\net45\ReflectSoftware.Insight.Listeners.SqlServer.dll" />
     </files>
 </package>

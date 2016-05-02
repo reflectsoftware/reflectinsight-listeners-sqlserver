@@ -5,6 +5,8 @@
 [![NuGet Version](http://img.shields.io/nuget/v/reflectsoftware.insight.listeners.SqlServer.svg?style=flat)](http://www.nuget.org/packages/ReflectSoftware.Insight.Listeners.SqlServer/)
 [![Stars](https://img.shields.io/github/stars/reflectsoftware/reflectinsight-listeners-SqlServer.svg)](https://github.com/reflectsoftware/reflectinsight-listeners-SqlServer/stargazers)
 
+**Package** - [ReflectSoftware.Insight.Listeners.SqlServer](http://www.nuget.org/packages/ReflectSoftware.Insight.Listeners.SqlServer/) | **Platforms** - .NET 4.5
+
 ## Overview ##
 
 We've added a new destination listener extension for ReflectInsight for logging to SQL Server. This new destination listener extension is called ReflectSoftware.Insight.Listeners.SqlServer and allows you to send logging messages to a SQL Server database.
