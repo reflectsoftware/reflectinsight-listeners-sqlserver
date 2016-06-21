@@ -5,7 +5,7 @@
 [![NuGet Version](http://img.shields.io/nuget/v/reflectsoftware.insight.listeners.SqlServer.svg?style=flat)](http://www.nuget.org/packages/ReflectSoftware.Insight.Listeners.SqlServer/)
 [![Stars](https://img.shields.io/github/stars/reflectsoftware/reflectinsight-listeners-SqlServer.svg)](https://github.com/reflectsoftware/reflectinsight-listeners-SqlServer/stargazers)
 
-**Package** - [ReflectSoftware.Insight.Listeners.SqlServer](http://www.nuget.org/packages/ReflectSoftware.Insight.Listeners.SqlServer/) | **Platforms** - .NET 4.5
+**Package** - [ReflectSoftware.Insight.Listeners.SqlServer](http://www.nuget.org/packages/ReflectSoftware.Insight.Listeners.SqlServer/) | **Platforms** - .NET 4.5.1 and above
 
 ## Overview ##
 
