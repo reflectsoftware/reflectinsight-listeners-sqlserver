@@ -17,70 +17,116 @@ namespace ReflectSoftware.Insight.Listeners
 {
     internal class SqlServerListener : IReflectInsightListener
     {
-        private ConnectionStringSettings ConnectionSettings { get; set; }        
+        private ConnectionStringSettings ConnectionSettings { get; set; }    
+        
         private String SqlMessageIdentityTemplate { get; set; }
+
         private String SqlMessageStatementTemplate { get; set; }
+
         private String SqlMessageExtensionStatementTemplate { get; set; }
+
         private TransactionScopeOption TransactionOption { get; set; }
+
         private TimeSpan DelayRetryOnDbIssueTimeSpan { get; set; }
+
         private DateTime LastBadIssueDetected { get; set; }
 
-        ///--------------------------------------------------------------------
+        /// <summary>
+        /// Updates the parameter variables.
+        /// </summary>
+        /// <param name="listener">The listener.</param>
+        /// <exception cref="ReflectInsightException">
+        /// </exception>
         public void UpdateParameterVariables(IListenerInfo listener)
         {
             LastBadIssueDetected = DateTime.MinValue;
 
             String details = listener.Params["details"];
             if (StringHelper.IsNullOrEmpty(details))
+            {
                 throw new ReflectInsightException(String.Format("Missing details parameter for listener: '{0}' using details: '{1}'.", listener.Name, listener.Details));
+            }
 
             ConfigNode settings = new ConfigNode(ReflectInsightConfig.Settings.XmlSection);
             if (!settings.IsSectionSet)
-                throw new ReflectInsightException(String.Format("Cannot find Database Details node '{0}' in configuration settings.", details));                     
-            
+            {
+                throw new ReflectInsightException(String.Format("Cannot find Database Details node '{0}' in configuration settings.", details));
+            }
+
             ConfigNode dbSettings = settings.GetConfigNode(String.Format("./databaseDetails/details[@name='{0}']", details));
             if (dbSettings == null || !dbSettings.IsSectionSet)
-                throw new ReflectInsightException(String.Format("Cannot find Database Details node '{0}' in configuration settings.", details));                     
+            {
+                throw new ReflectInsightException(String.Format("Cannot find Database Details node '{0}' in configuration settings.", details));
+            }
 
             String connectionStringName = dbSettings.GetNodeInnerText("connectionStringName", String.Empty);
             if (StringHelper.IsNullOrEmpty(connectionStringName))
+            {
                 throw new ReflectInsightException(String.Format("connectionStringName node text value for Database Details '{0}' in configuration settings is required.", details));
+            }
 
             ConnectionSettings = ConfigurationManager.ConnectionStrings[connectionStringName];
             if (ConnectionSettings == null)
+            {
                 throw new ReflectInsightException(String.Format("Could not properly create Database Connection Settings using connection string: '{0}' for Database Details '{1}'.", connectionStringName, details));
+            }
 
             DelayRetryOnDbIssueTimeSpan = TimeSpan.FromSeconds(Int32.Parse(dbSettings.GetNodeInnerText("delayRetryOnDbIssue", "60")));
 
             SqlMessageIdentityTemplate = dbSettings.GetNodeInnerText("sqlMessageIdentity", String.Empty).ToLower();
             if (StringHelper.IsNullOrEmpty(SqlMessageIdentityTemplate))
+            {
                 throw new ReflectInsightException(String.Format("sqlMessageIdentity node text value for Database Details '{0}' in configuration settings is required.", details));
-                        
+            }
+            
             SqlMessageStatementTemplate = dbSettings.GetNodeInnerText("sqlScriptMessage", String.Empty).ToLower();
             if (StringHelper.IsNullOrEmpty(SqlMessageStatementTemplate))
+            {
                 throw new ReflectInsightException(String.Format("sqlScriptMessage node text value for Database Details '{0}' in configuration settings is required.", details));
+            }
 
             SqlMessageExtensionStatementTemplate = dbSettings.GetNodeInnerText("sqlScriptMessageExtension", String.Empty).ToLower();
-            TransactionOption = dbSettings.GetNodeInnerText("transactionRequired", "false") == "false" ? TransactionScopeOption.Suppress : TransactionScopeOption.Required;
+            TransactionOption = dbSettings.GetNodeInnerText("transactionRequired", "false") == "false" 
+                ? TransactionScopeOption.Suppress 
+                : TransactionScopeOption.Required;
         }
-        
-        ///--------------------------------------------------------------------
+
+        /// <summary>
+        /// Adds the parameter.
+        /// </summary>
+        /// <param name="statement">The statement.</param>
+        /// <param name="paramList">The parameter list.</param>
+        /// <param name="paramName">Name of the parameter.</param>
+        /// <param name="paramValue">The parameter value.</param>
+        /// <param name="dbType">Type of the database.</param>
         private static void AddParameter(String statement, SqlStatementParameterList paramList, String paramName, Object paramValue, DbType dbType)
         {
             if (statement.Contains(paramName))
+            {
                 paramList.Add(paramName, paramValue, dbType, null, null);
+            }
         }
 
-        ///--------------------------------------------------------------------
+        /// <summary>
+        /// Gets the text details.
+        /// </summary>
+        /// <param name="package">The package.</param>
+        /// <returns></returns>
         private static String GetTextDetails(ReflectInsightPackage package)
         {
             if (!package.HasDetails || !package.IsDetail<DetailContainerString>())
+            {
                 return null;
+            }
 
             return package.GetDetails<DetailContainerString>().FData;
         }
 
-		///--------------------------------------------------------------------
+        /// <summary>
+        /// Gets the key container.
+        /// </summary>
+        /// <param name="keyRange">The key range.</param>
+        /// <returns></returns>
         private KeyRangeContainer GetKeyContainer(Int64 keyRange)
         {
             SqlStatementBuilder sb = new SqlStatementBuilder();
@@ -110,15 +156,22 @@ namespace ReflectSoftware.Insight.Listeners
             return new KeyRangeContainer(nextKey, nextKey + keyRange - 1);
         }
 
-        ///--------------------------------------------------------------------
+        /// <summary>
+        /// Receives the specified messages.
+        /// </summary>
+        /// <param name="messages">The messages.</param>
         public void Receive(ReflectInsightPackage[] messages)
         {
             if (DateTime.Now.Subtract(LastBadIssueDetected) < DelayRetryOnDbIssueTimeSpan)
+            {
                 return;
+            }
 
             List<ReflectInsightPackage> packages = messages.Where(p => p.FMessageType != MessageType.Clear && !RIUtils.IsViewerSpecificMessageType(p.FMessageType)).ToList();
             if (packages.Count == 0)
+            {
                 return;
+            }
 
             try
             {
