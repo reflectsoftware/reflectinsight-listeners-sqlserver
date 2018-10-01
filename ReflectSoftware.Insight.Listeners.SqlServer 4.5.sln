@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25123.0
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2036
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReflectSoftware.Insight.Listeners.SqlServer 4.5", "src\ReflectSoftware.Insight.Listeners.SqlServer 4.5.csproj", "{B2789706-0C89-4434-A29F-3CF263A51B84}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{69F6AAF4-1294-4998-9FD8-6CA94F71B152}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "assets", "assets", "{69F6AAF4-1294-4998-9FD8-6CA94F71B152}"
 	ProjectSection(SolutionItems) = preProject
 		Build.ps1 = Build.ps1
 		CHANGES.md = CHANGES.md
@@ -18,6 +18,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{10DDDCE1-E8D
 		src\ReflectSoftware.Insight.Listeners.SqlServer.nuspec = src\ReflectSoftware.Insight.Listeners.SqlServer.nuspec
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{C60516D4-106A-44DC-842E-1E462BB38CDA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Sample", "Sample", "{323C20CB-50B9-480E-BA4D-CC7231C7139C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReflectInsight.Listener.SqlServer.Sample", "Sample\ReflectInsight.Listener.SqlServer.Sample\ReflectInsight.Listener.SqlServer.Sample.csproj", "{F3DA175B-8CF3-46A7-B36F-E052D8995342}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -28,11 +34,20 @@ Global
 		{B2789706-0C89-4434-A29F-3CF263A51B84}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B2789706-0C89-4434-A29F-3CF263A51B84}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B2789706-0C89-4434-A29F-3CF263A51B84}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F3DA175B-8CF3-46A7-B36F-E052D8995342}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F3DA175B-8CF3-46A7-B36F-E052D8995342}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F3DA175B-8CF3-46A7-B36F-E052D8995342}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F3DA175B-8CF3-46A7-B36F-E052D8995342}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
+		{B2789706-0C89-4434-A29F-3CF263A51B84} = {C60516D4-106A-44DC-842E-1E462BB38CDA}
 		{10DDDCE1-E8DB-4F41-8DE2-633EBBC768B4} = {69F6AAF4-1294-4998-9FD8-6CA94F71B152}
+		{F3DA175B-8CF3-46A7-B36F-E052D8995342} = {323C20CB-50B9-480E-BA4D-CC7231C7139C}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {629BF972-571F-42F3-B277-74AC0C0097BD}
 	EndGlobalSection
 EndGlobal
